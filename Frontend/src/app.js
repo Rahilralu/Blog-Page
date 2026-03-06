@@ -13,8 +13,16 @@ export const  handleLoginSuccess = async(email,password,setCurrentPage,type) => 
   });
 
   const data = await res.json();
+  if(type === 'Sign-Up' && data.success === false && data.output === true){
+    return true;
+  }
+
+  else if(type === 'Sign-In' && data.success === false && data.output === true){
+    return true;
+  }
 
   if(data.success){
       setCurrentPage('dashboard');
+      return false;
   }
 }

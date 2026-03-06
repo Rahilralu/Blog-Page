@@ -4,11 +4,15 @@ import './App.css'
 function Login({ onLoginSuccess, onNavigate }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage,setErrorMessage] = useState(false)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
 
-        onLoginSuccess(email, password)
+        const error = await onLoginSuccess(email, password)
+        if(error){
+            setErrorMessage(true);
+        }
     }
 
     return (
@@ -46,6 +50,11 @@ function Login({ onLoginSuccess, onNavigate }) {
                 <p className="auth-switch">
                     Don't have an account? <span onClick={() => onNavigate('signup')}>Sign Up</span>
                 </p>
+                {errorMessage && (
+                <p style={{ color: "red", marginTop: "10px" }}>
+                    THe password is mismatched
+                </p>
+                )}
             </div>
         </div>
     )

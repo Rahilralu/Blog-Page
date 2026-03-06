@@ -4,11 +4,14 @@ import './App.css'
 function Signup({ onLoginSuccess,onNavigate }) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
+    const [errorMessage,setErrorMessage] = useState(false)
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        onLoginSuccess(email, password)
-
+        const error = await onLoginSuccess(email, password)
+        if(error){
+            setErrorMessage(true);
+        }
     }
 
     return (
@@ -46,6 +49,11 @@ function Signup({ onLoginSuccess,onNavigate }) {
                 <p className="auth-switch">
                     Already have an account? <span onClick={() => onNavigate('login')}>Sign In</span>
                 </p>
+                {errorMessage && (
+                <p style={{ color: "red", marginTop: "10px" }}>
+                    User already Exists
+                </p>
+                )}
             </div>
         </div>
     )
