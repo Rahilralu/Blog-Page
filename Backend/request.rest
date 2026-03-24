@@ -1,0 +1,16 @@
+POST http://localhost:5000/sign
+Content-Type: application/json
+
+{
+    "username": "Jim"
+}
+
+###
+
+GET http://localhost:8000
+
+### 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6Ikt5bGUiLCJpYXQiOjE3NzMyMjYyNjB9.UcMkGCctSQW78N8aNQ6uC6raMRHD0QxjzTrHsSJhvuE
+
+
+### 
