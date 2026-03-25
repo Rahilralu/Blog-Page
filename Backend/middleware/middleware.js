@@ -20,6 +20,25 @@ export function generateAccessToken(userId, email) {
     );
 }
 
+export const deleteuser = async function (req,res,next) {
+   try{
+     const token = req.cookies.refresh_token;
+    if(!token) return res.status(401).json({message : "Logged Out"});
+    else{
+        const result=await pool.query(
+            "UPDATE users SET refresh_token = null where refresh_token = $1",
+            [token]
+        )
+        res.clearCookie('refresh_token');
+        return res.status(200).json({message : "Logged Out"})
+    }
+   }
+   catch(err){
+    console.log(err);
+    res.status(500).json({ success : false})
+   }
+}
+
 export const cookievalidator = async function (req,res,next){
     const token = req.cookies.refresh_token;
     if (!token) return res.status(401).json({ message: "No refresh token" });
@@ -32,7 +51,7 @@ export const cookievalidator = async function (req,res,next){
             return res.status(403).json({"Token not in db may be logged off"})
         }
         else{
-            jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,(err,user) => {
+            jwt.verify(token,process.env.REFRESH_TOKEN_SECRET,(err) => {
                 if(err){
                     return res.status(403).json({"Error in token no refresh token"})
                 }
@@ -46,16 +65,18 @@ export const cookievalidator = async function (req,res,next){
     }}
 
 
+    
+
 export const authenticate_token = function (req,res,next) {
     try{
        const authHeader = req.headers['authorization']
        const token = authHeader && authHeader.split(' ')[1] ;
        if(token == null) {
-            return res.status(400);
+            return res.status(401).json({ message: "No token" });;
        }    
        jwt.verify(token,process.env.ACCESS_TOKEN_SECRET,(err,user) => {
         if(err){
-            return res.status(403);
+            return res.status(403).json({ message: "Invalid token" });
         }
         req.user = user
         next()

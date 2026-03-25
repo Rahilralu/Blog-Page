@@ -1,5 +1,5 @@
 import express from "express";
-import { login_credential,cookievalidator  } from "../middleware/middleware.js";
+import { login_credential,cookievalidator,deleteuser  } from "../middleware/middleware.js";
 
 const router = express.Router();
 const posts = [
@@ -13,8 +13,8 @@ const posts = [
     }
 ]
 
-router.get('/refresh',cookievalidator)
-
+router.post('/refresh',cookievalidator)
+router.get('/logout',deleteuser)
 router.get('/',(req,res) => {
     res.send('HAHAHA')
 })
