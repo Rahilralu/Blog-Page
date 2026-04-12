@@ -8,9 +8,8 @@ dotenv.config();
 const app = express()
 
 app.use(cors({
-    origin: 'http://localhost:5173',
-    credentials: true,
-    methods: ['GET', 'POST', 'PUT', 'DELETE'],
+    origin: ['http://localhost:5173', 'http://localhost:5174', 'http://localhost:3000'],
+    credentials: true
 }));
 app.use(express.json()); //req.body will broke
 app.use(cookieParser())
