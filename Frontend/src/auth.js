@@ -1,13 +1,5 @@
-let _token = null
+let _token = null;
 
-export function setToken(token) {
-    _token = token
-}
-
-export function getToken() {
-    return _token
-}
-
-export function clearToken() {
-    _token = null
-}
+export const setToken = (token) => { _token = token; };
+export const getToken = () => _token;
+export const clearToken = () => { _token = null; };
