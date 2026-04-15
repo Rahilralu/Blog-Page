@@ -73,7 +73,7 @@ export default function Dashboard({ setCurrentPage }) {
             <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-500 to-violet-600 flex items-center justify-center shadow-lg shadow-indigo-500/20">
                <Compass className="w-6 h-6 text-white" />
             </div>
-            <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">devlog.</span>
+            <span className="font-bold text-xl tracking-tight bg-clip-text text-transparent bg-gradient-to-r from-white to-gray-400">Blog web\.</span>
           </div>
         </div>
         

@@ -34,7 +34,6 @@ export const cookievalidator = async function (req, res, next) {
 
         jwt.verify(token, process.env.REFRESH_TOKEN_SECRET, (err) => {
             if (err) return res.status(403).json({ message: "Invalid refresh token" });
-
             const user = result.rows[0];
             const access_token = generateAccessToken(user.id, user.email);
             return res.json({ access_token });

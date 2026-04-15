@@ -1,0 +1,33 @@
+POST http://localhost:8000/api/posts
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzc2Mjc1MjMzLCJleHAiOjE3NzYyNzg4MzN9.wezvD70jwZk-CHwdyYM3RMLbFHV1oTtErvWEqPCx-e4
+
+{
+  "title": "My second post",
+  "content": "This is my second post content",
+  "published": true
+}
+###
+POST http://localhost:8000/api/auth/refresh
+Content-Type: application/json
+
+{
+    "username": "Jim"
+}
+
+###
+GET  http://localhost:8000/api/posts
+
+###
+PUT http://localhost:8000/api/posts/2
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzc2Mjc1MjMzLCJleHAiOjE3NzYyNzg4MzN9.wezvD70jwZk-CHwdyYM3RMLbFHV1oTtErvWEqPCx-e4
+
+{
+  "title": "My second post",
+  "content": "Checking update working"
+}
+
+###
+DELETE http://localhost:8000/api/posts/1
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzc2Mjc1MjMzLCJleHAiOjE3NzYyNzg4MzN9.wezvD70jwZk-CHwdyYM3RMLbFHV1oTtErvWEqPCx-e4
