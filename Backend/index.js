@@ -18,7 +18,9 @@ const limiter = rateLimit({
 app.use(helmet());
 app.use(limiter);
 app.use(cors({
-    origin: [''],
+    origin: [
+        'https://blog-page-rho-indol.vercel.app'
+    ],
     credentials: true
 }));
 app.use(express.json());
