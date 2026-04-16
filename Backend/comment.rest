@@ -1,0 +1,19 @@
+GET http://localhost:8000/api/comments/post/2
+
+###
+POST http://localhost:8000/api/comments/post/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzc2MzEyMTQwLCJleHAiOjE3NzYzMTU3NDB9.jG-WmcEQ6ADlnRQRiF_pQ6XRApKTK-_hB5q8gZrWVgE
+Content-Type: application/json
+
+{ "body": "Great post!" }
+
+###
+DELETE http://localhost:8000/api/comments/2
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjU3LCJlbWFpbCI6InRlc3RAZ21haWwuY29tIiwiaWF0IjoxNzc2MzEyMTQwLCJleHAiOjE3NzYzMTU3NDB9.jG-WmcEQ6ADlnRQRiF_pQ6XRApKTK-_hB5q8gZrWVgE
+###
+POST http://localhost:8000/api/auth/refresh
+Content-Type: application/json
+
+{
+    "username": "Jim"
+}
